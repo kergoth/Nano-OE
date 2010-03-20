@@ -9,7 +9,6 @@ python () {
         hash = d.getVarFlag("SRC_URI_%s" % pv, flag)
         if hash:
             d.setVarFlag("SRC_URI", flag, hash)
-            break
 
     pref = d.getVar("DEFAULT_PREFERENCE_%s" % pv, True)
     if pref:
