@@ -10,6 +10,7 @@ python () {
         if hash:
             d.setVarFlag("SRC_URI", flag, hash)
 
+    # Necessary until we get PV in OVERRIDES working
     pref = d.getVar("DEFAULT_PREFERENCE_%s" % pv, True)
     if pref:
         d.setVar("DEFAULT_PREFERENCE", pref)
