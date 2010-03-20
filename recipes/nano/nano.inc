@@ -6,7 +6,9 @@ LICENSE = "GPLv2"
 SECTION = "console/utils"
 DEPENDS = "ncurses"
 
-SRC_URI = "${GNU_MIRROR}/nano/nano-${PV}.tar.gz \
+BPV = "${@'.'.join('${PV}'.split('.')[:2])}"
+#SRC_URI = "${GNU_MIRROR}/nano/nano-${PV}.tar.gz
+SRC_URI = "http://www.nano-editor.org/dist/v${BPV}/nano-${PV}.tar.gz \
            file://glib.m4"
 
 inherit autotools
