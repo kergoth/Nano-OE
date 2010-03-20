@@ -5,10 +5,10 @@ python () {
     pv = d.getVar("PV", True)
 
     # Allow version-specific checksums
-    for flag in ("md5sum", "sha256sum"):
-        hash = d.getVarFlag("SRC_URI_%s" % pv, flag)
-        if hash:
-            d.setVarFlag("SRC_URI", flag, hash)
+    flags = d.getVarFlags("SRC_URI_%s" % pv)
+    if flags:
+        for flag, value in flags.iteritems():
+            d.setVarFlag("SRC_URI", flag, value)
 
     # Necessary until we get PV in OVERRIDES working
     pref = d.getVar("DEFAULT_PREFERENCE_%s" % pv, True)
