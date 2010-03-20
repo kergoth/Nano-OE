@@ -6,6 +6,7 @@ BBVERSIONS = "1.0.[0-9] \
               2.0.[0-9] \
               2.1.4 2.1.8 2.1.9 2.1.10 \
               2.2.[0-3]"
+DEFAULT_PREFERENCE_2.2.3 = "-1"
 
 SRC_URI_2.0.9[md5sum] = "2be94dc43fb60fff4626a2401a977220"
 SRC_URI_2.0.9[sha256sum] = "6d212385680d29dcda35dda7801da19c80182a8bc6bc6d5cf7533034c853d37f"
