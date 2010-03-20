@@ -7,7 +7,6 @@ SECTION = "console/utils"
 DEPENDS = "ncurses"
 
 BPV = "${@'.'.join('${PV}'.split('.')[:2])}"
-#SRC_URI = "${GNU_MIRROR}/nano/nano-${PV}.tar.gz
 SRC_URI = "http://www.nano-editor.org/dist/v${BPV}/nano-${PV}.tar.gz \
            file://glib.m4"
 
@@ -18,4 +17,8 @@ EXTRA_OECONF = "--enable-all"
 
 do_configure_prepend () {
 	install -m 0644 ${WORKDIR}/glib.m4 m4/
+}
+
+MIRRORS_prepend () {
+http://www.nano-editor.org/dist/v${BPV}/    ${GNU_MIRROR}/nano/
 }
