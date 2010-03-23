@@ -1,0 +1,14 @@
+---
+ Makefile.am |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- nano-1.2.0.orig/Makefile.am
++++ nano-1.2.0/Makefile.am
+@@ -31,6 +31,6 @@ EXTRA_DIST =	ABOUT-NLS AUTHORS BUGS COPY
+ SUBDIRS = po m4
+ 
+ localedir = $(datadir)/locale
+-INCLUDES = -Iintl -DLOCALEDIR=\"$(localedir)\" -I@includedir@
++INCLUDES = -Iintl -DLOCALEDIR=\"$(localedir)\"
+ 
+ ACLOCAL_AMFLAGS = -I m4

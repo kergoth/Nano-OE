@@ -1,0 +1,32 @@
+---
+ configure.ac |   12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
+
+--- nano-1.3.3.orig/configure.ac
++++ nano-1.3.3/configure.ac
+@@ -40,8 +40,9 @@ dnl Checks for header files.
+ AC_HEADER_STDC
+ AC_CHECK_HEADERS(fcntl.h getopt.h libintl.h limits.h regex.h termio.h termios.h unistd.h)
+ AC_CHECK_HEADER(regex.h,
+-    AC_MSG_CHECKING([for broken regexec])
+-    AC_TRY_RUN([
++    AC_CACHE_CHECK([for broken regexec],
++	[nano_cv_func_regexec_segv_emptystr],
++	AC_TRY_RUN([
+ #include <sys/types.h>
+ #include <regex.h>
+ int main(void)
+@@ -54,8 +55,11 @@ int main(void)
+     regfree(&reg);
+     return 0;
+ }],
+-	AC_MSG_RESULT(no),
+-	AC_MSG_RESULT(yes); AC_DEFINE(BROKEN_REGEXEC, 1, [Define this if your regexec() function segfaults when passed an empty string under certain conditions.])
++	    [nano_cv_func_regexec_segv_emptystr=no],
++	    [nano_cv_func_regexec_segv_emptystr=yes])
++	if test x$nano_cv_func_regexec_segv_emptystr = xyes; then
++	    AC_DEFINE(BROKEN_REGEXEC, 1, [Define this if your regexec() function segfaults when passed an empty string under certain conditions.])
++	fi
+     )
+ )
+ 

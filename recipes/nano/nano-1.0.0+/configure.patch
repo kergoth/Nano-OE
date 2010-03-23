@@ -1,0 +1,14 @@
+---
+ configure.in |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- nano-1.0.6.orig/configure.in
++++ nano-1.0.6/configure.in
+@@ -254,6 +254,6 @@ then
+ fi
+ 
+ dnl i18n stuff - pretty incomplete for now
+-AM_GNU_GETTEXT
++NANO_AM_GNU_GETTEXT
+ 
+ AC_OUTPUT([Makefile intl/Makefile po/Makefile.in])

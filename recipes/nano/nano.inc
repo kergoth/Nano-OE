@@ -6,9 +6,12 @@ LICENSE = "GPLv2"
 SECTION = "console/utils"
 DEPENDS = "ncurses"
 
-BPV = "${@'.'.join('${PV}'.split('.')[:2])}"
-SRC_URI = "http://www.nano-editor.org/dist/v${BPV}/nano-${PV}.tar.gz \
-           file://glib.m4"
+BRANCH = "${@'.'.join('${PV}'.split('.')[:2])}"
+SRC_URI = "http://www.nano-editor.org/dist/v${BRANCH}/nano-${PV}.tar.gz \
+           file://m4/"
+INC_PR = "r1"
+
+BBCLASSEXTEND = "native"
 
 inherit autotools
 
@@ -16,7 +19,10 @@ inherit autotools
 EXTRA_OECONF = "--enable-all"
 
 do_configure_prepend () {
-	install -m 0644 ${WORKDIR}/glib.m4 m4/
+    install -d ${S}/m4
+    for m4 in ${WORKDIR}/m4/*.m4; do
+        install -m 0644 $m4 ${S}/m4/`basename $m4`
+    done
 }
 
 MIRRORS_prepend () {

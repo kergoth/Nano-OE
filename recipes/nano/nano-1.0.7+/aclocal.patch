@@ -1,0 +1,24 @@
+---
+ Makefile.am |    8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
+
+--- nano-1.0.9.orig/Makefile.am
++++ nano-1.0.9/Makefile.am
+@@ -1,9 +1,6 @@
+ ## $Id: Makefile.am,v 1.7.2.4 2002/03/26 17:56:34 astyanax Exp $
+ AUTOMAKE_OPTIONS = gnu no-dependencies
+-M4DIR = $(srcdir)/m4
+-ACLOCAL_AMFLAGS = -I $(M4DIR)
+-ACINCLUDE_INPUTS = $(M4DIR)/gettext.m4 $(M4DIR)/largefile.m4 \
+-	$(M4DIR)/lcmessage.m4 $(M4DIR)/progtest.m4
++ACLOCAL_AMFLAGS = -I m4
+ 
+ bin_PROGRAMS = 	nano
+ nano_SOURCES =	cut.c \
+@@ -31,6 +28,3 @@ SUBDIRS = po intl
+ 
+ localedir = $(datadir)/locale
+ INCLUDES = -Iintl -DLOCALEDIR=\"$(localedir)\"
+-
+-$(srcdir)/acinclude.m4: $(ACINCLUDE_INPUTS)
+-	cat $(ACINCLUDE_INPUTS) > $@
